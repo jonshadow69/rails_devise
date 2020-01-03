@@ -1,0 +1,43 @@
+<%= render 'layouts/navbar' %>
+
+<%= button_to "Log Out", destroy_user_session_path, method: :delete %>
+<h3 class='center'>Welcome, <%= current_user.first_name %>!</h3>
+<br />
+
+  <div class="center">
+    <div class="btn-floating btn-large green">
+      <i class="material-icons">
+      <strong>
+      <%= link_to '+', new_account_path %>
+      </strong>
+      </i>
+    </div>
+  </div>
+<hr />
+
+<div class="row">
+
+  <% @accounts.each do |a| %>
+  
+  <div class="col s12 m6">
+    <div class="card blue-grey darken-1">
+      <div class='container'>
+      <div class='center'>
+        <div class="card-content white-text">
+            <i class="large material-icons">account_balance_wallet</i>
+            <span class="card-title">
+            <strong><%= a.name %></strong></span>
+            <p><%= a.balance %></p></li>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-action">
+        <%= link_to 'Make a Deposit', account_path(:account_id) %>
+        <%= link_to 'Accounts', accounts_path, :class => 'right' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %> 
